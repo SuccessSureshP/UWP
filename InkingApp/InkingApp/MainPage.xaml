@@ -1,0 +1,108 @@
+﻿<Page x:Class="InkingApp.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:InkingApp"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid x:Name="topgrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="100" />
+
+            <RowDefinition Height="*" />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal">
+
+            <Button Margin="3"
+                    Click="IncreaseSize"
+                    Content="Size +" />
+            <Button Margin="3"
+                    Click="DecreaseSize"
+                    Content="Size -" />
+            <Button Margin="3"
+                    Click="SetRedPen"
+                    Content="Red Pen" />
+            <Button Margin="3"
+                    Click="SetCalligraphyPen"
+                    Content="Calligraphy Pen" />
+            <Button Margin="3"
+                    Click="SetHighlighterPen"
+                    Content="Highlighter" />
+            <Button x:Name="EraserButton"
+                    Margin="3"
+                    Background="LightGray"
+                    Click="Eraser"
+                    Content="Eraser" />
+
+            <Button Margin="3"
+                    Click="Clear"
+                    Content="Clear" />
+            <Button Margin="3"
+                    Click="Save"
+                    Content="Save" />
+
+            <Button Margin="3"
+                    Click="Load"
+                    Content="Load" />
+
+            <Button Margin="3"
+                    Click="OnRenderToSecondImage"
+                    Content="Copy"
+                    Visibility="Collapsed" />
+
+
+            <Button Margin="3"
+                    Click="ShareAppBarButton_Click"
+                    Content="Share as Image"
+                    Visibility="Collapsed" />
+
+            <Button x:Name="ShareInkingButton"
+                    Margin="3"
+                    Click="ShareInkingButton_Click"
+                    Content="Share Inking"
+                    Visibility="Collapsed" />
+
+
+        </StackPanel>
+
+
+        <InkCanvas x:Name="inkCanvas" Grid.Row="1" />
+
+
+
+        <Grid Grid.Row="1"
+              Grid.ColumnSpan="2"
+              Background="Black"
+              BorderBrush="{ThemeResource SystemControlBackgroundAccentBrush}"
+              BorderThickness="1,1,1,1"
+              Visibility="Collapsed">
+            <ScrollViewer x:Name="PenCanvasScrollViewer"
+                          Background="White"
+                          HorizontalScrollBarVisibility="Auto"
+                          HorizontalScrollMode="Auto"
+                          ZoomMode="Enabled">
+                <Grid Width="5000" Height="2000">
+                    <Grid x:Name="parentGrid">
+
+
+                        <Image Source="ms-appx:///Assets/InkingSlateBackground.png" Stretch="UniformToFill" />
+
+                        <!--<Grid x:Name="GridLinesContainer" Visibility="{Binding IsChecked, ElementName=AppbarButtonGrid, Converter={StaticResource BooleanToVisibilityConverter}}" />-->
+
+                    </Grid>
+                    <!--<InkCanvas x:Name="inkCanvas" />-->
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
